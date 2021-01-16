@@ -23,9 +23,11 @@ function draw() {
   }
   
   for (let i = fireworks.length - 1; i >= 0; i--) {
+    //did whatever this is
     fireworks[i].update();
     blendMode(ADD);
     fireworks[i].show();
+    blendMode(BLEND);
     
     if (fireworks[i].done()) {
       fireworks.splice(i, 1);
