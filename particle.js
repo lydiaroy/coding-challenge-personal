@@ -2,6 +2,7 @@
 // http://codingtra.in
 // https://youtu.be/CKeyIbT3vXI
 
+
 class Particle {
   constructor(x, y, hu, firework) {
     this.pos = createVector(x, y);
@@ -10,10 +11,10 @@ class Particle {
     this.hu = hu;
     this.acc = createVector(0, 0);
     if (this.firework) {
-      this.vel = createVector(0, random(-12, -8));
+      this.vel = createVector(random(-5, 5), random(-12, -8)); // changed first value from 0
     } else {
       this.vel = p5.Vector.random2D();
-      this.vel.mult(random(2, 10));
+      this.vel.mult(random(2, 10)); 
     }
   }
 
@@ -23,6 +24,7 @@ class Particle {
 
   update() {
     if (!this.firework) {
+      //can change this to make the explosions bigger or smaller
       this.vel.mult(0.9);
       this.lifespan -= 4;
     }
@@ -44,10 +46,12 @@ class Particle {
 
     if (!this.firework) {
       strokeWeight(2);
-      stroke(this.hu, 255, 255, this.lifespan);
+      //changed the last two to random(255) instead of 255
+      stroke(this.hu, random(255), random(255), this.lifespan);
     } else {
       strokeWeight(4);
-      stroke(this.hu, 255, 255);
+      //changed the last two to random(255) instead of 255
+      stroke(this.hu, random(255), random(255));
     }
 
     point(this.pos.x, this.pos.y);
